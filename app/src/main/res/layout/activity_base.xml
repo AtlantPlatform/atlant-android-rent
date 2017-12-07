@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <ImageView
+    android:id="@+id/base_image_fon"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:contentDescription="@string/system_image"
+    android:scaleType="centerCrop"/>
+
+  <android.support.design.widget.CoordinatorLayout
+    android:id="@+id/base_coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+      android:id="@+id/base_refresh"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+      <FrameLayout
+        android:id="@+id/base_activity_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <android.support.design.widget.AppBarLayout
+      android:id="@+id/base_appbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@null"
+      android:theme="@style/AppTheme.AppBarOverlay"
+      app:elevation="0dp">
+
+      <android.support.v7.widget.Toolbar
+        android:id="@+id/base_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <TextView
+          android:id="@+id/base_toolbar_title"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:letterSpacing="@dimen/text_letter_spacing"
+          android:text="@string/app_name"
+          android:textAllCaps="true"
+          android:textColor="@color/colorPrimaryText"
+          android:textSize="@dimen/text_size_18"
+          app:layout_scrollFlags="scroll|enterAlways"/>
+
+      </android.support.v7.widget.Toolbar>
+
+      <FrameLayout
+        android:id="@+id/base_custom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        app:layout_scrollFlags="scroll|enterAlways"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+  </android.support.design.widget.CoordinatorLayout>
+
+</RelativeLayout>
