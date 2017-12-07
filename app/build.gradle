@@ -23,6 +23,17 @@ android {
     kapt {
         generateStubs = true
     }
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def abi = output.getFilter(com.android.build.OutputFile.ABI)
+            if (abi == null) {
+                abi = "universal"
+            }
+            def nameBuild = variant.name
+            def versionBuild = variant.versionName
+            outputFileName = "atlant-rent-" + nameBuild + "-" + abi + "-v" + versionBuild + ".apk"
+        }
+    }
 }
 
 dependencies {
@@ -42,7 +53,6 @@ dependencies {
     compile 'me.zhanghai.android.materialprogressbar:library:1.4.1'
 
     //Architecture
-    compile 'com.android.support:multidex:1.0.2'
     compile 'com.jakewharton:butterknife:8.2.1'
     kapt 'com.jakewharton:butterknife-compiler:8.2.1'
     compile 'org.greenrobot:eventbus:3.0.0'
