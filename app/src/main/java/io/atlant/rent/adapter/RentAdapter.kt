@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.squareup.picasso.Picasso
 import io.atlant.rent.R
 import io.atlant.rent.model.Rent
@@ -17,6 +15,7 @@ import io.atlant.rent.utils.PicassoTargetUtils
 import io.atlant.rent.utils.ScreenUtils
 import io.atlant.rent.view.ImageViewRound
 import io.atlant.rent.view.LikeView
+import kotlinx.android.synthetic.main.adapter_rent.view.*
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar
 import java.util.*
 
@@ -35,34 +34,35 @@ class RentAdapter(private val arrayItems: ArrayList<Rent>) : RecyclerView.Adapte
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        @BindView(R.id.linear)
-        lateinit var linearLayout: LinearLayout
-        @BindView(R.id.progress_bar)
-        lateinit var materialProgressBar: MaterialProgressBar
-        @BindView(R.id.rent_item_image)
-        lateinit var imageView: ImageViewRound
-        @BindView(R.id.rent_item_name_text)
-        lateinit var textName: TextView
-        @BindView(R.id.rent_item_address_text)
-        lateinit var textCity: TextView
-        @BindView(R.id.rent_item_rooms_text)
-        lateinit var textRooms: TextView
-        @BindView(R.id.rent_item_beds_text)
-        lateinit var textBeds: TextView
-        @BindView(R.id.rent_item_price_text)
-        lateinit var textPrice: TextView
-        @BindView(R.id.rent_item_how_day_text)
-        lateinit var textHowDay: TextView
-        @BindView(R.id.rent_item_down_up)
-        lateinit var imTriangle: ImageView
-        @BindView(R.id.rent_item_like)
-        lateinit var likeView: LikeView
+
+        var linearLayout: LinearLayout? = null
+        var materialProgressBar: MaterialProgressBar? = null
+        var imageView: ImageViewRound? = null
+        var textName: TextView? = null
+        var textCity: TextView? = null
+        var textRooms: TextView? = null
+        var textBeds: TextView? = null
+        var textPrice: TextView? = null
+        var textHowDay: TextView? = null
+        var imTriangle: ImageView? = null
+        var likeView: LikeView? = null
 
         var target: PicassoTargetUtils
 
         init {
-            ButterKnife.bind(this, view)
-            target = PicassoTargetUtils(materialProgressBar, imageView)
+            linearLayout = view.adapter_rent_linear
+            materialProgressBar = view.adapter_rent_progress_bar
+            imageView = view.adapter_rent_image
+            textName = view.adapter_rent_name_text
+            textCity = view.adapter_rent_address_text
+            textRooms = view.adapter_rent_rooms_text
+            textBeds = view.adapter_rent_beds_text
+            textPrice = view.adapter_rent_price_text
+            textHowDay = view.adapter_rent_how_day_text
+            imTriangle = view.adapter_rent_down_up
+            likeView = view.adapter_rent_like
+
+            target = PicassoTargetUtils(materialProgressBar!!, imageView!!)
         }
     }
 
@@ -72,11 +72,10 @@ class RentAdapter(private val arrayItems: ArrayList<Rent>) : RecyclerView.Adapte
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
         val rent = arrayItems[position]
-        val context = holder.linearLayout.context
+        val context = holder.linearLayout!!.context
 
-        holder.linearLayout.setOnClickListener {
+        holder.linearLayout!!.setOnClickListener {
             if (callBack != null) {
                 callBack!!.onSelected(position)
             }
@@ -85,20 +84,20 @@ class RentAdapter(private val arrayItems: ArrayList<Rent>) : RecyclerView.Adapte
         Picasso.with(context).load(rent.imageUrl!![0]).resize(ScreenUtils.getWidth(context), 0)
                 .error(R.drawable.ic_warning).into(holder.target.target!!)
 
-        holder.textName.text = rent.name
-        holder.textCity.text = rent.country + ", " + rent.city
+        holder.textName!!.text = rent.name
+        holder.textCity!!.text = rent.country + ", " + rent.city
         val rooms = context.getString(R.string.rent_main_rooms)
-        holder.textRooms.text = rent.numberRooms.toString() + " " + rooms
+        holder.textRooms!!.text = rent.numberRooms.toString() + " " + rooms
         val beds = context.getString(R.string.rent_main_beds)
-        holder.textBeds.text = rent.numberBeds.toString() + " " + beds
-        holder.textPrice.text = "$ " + rent.priceDollars.toString()
-        holder.textHowDay.text = rent.howDay.toString()
-        holder.likeView.like = rent.numberLike
+        holder.textBeds!!.text = rent.numberBeds.toString() + " " + beds
+        holder.textPrice!!.text = "$ " + rent.priceDollars.toString()
+        holder.textHowDay!!.text = rent.howDay.toString()
+        holder.likeView!!.like = rent.numberLike
 
         if (rent.isGrowth) {
-            holder.imTriangle.setImageDrawable(ContextCompat.getDrawable(context, R.mipmap.ic_rent_up))
+            holder.imTriangle!!.setImageDrawable(ContextCompat.getDrawable(context, R.mipmap.ic_rent_up))
         } else {
-            holder.imTriangle.setImageDrawable(ContextCompat.getDrawable(context, R.mipmap.ic_rent_down))
+            holder.imTriangle!!.setImageDrawable(ContextCompat.getDrawable(context, R.mipmap.ic_rent_down))
         }
     }
 

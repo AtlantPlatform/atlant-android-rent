@@ -6,23 +6,16 @@ import android.support.v4.view.PagerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.squareup.picasso.Picasso
 import io.atlant.rent.R
 import io.atlant.rent.utils.PicassoTargetUtils
 import io.atlant.rent.utils.PicassoTargetUtils.CallBack
 import io.atlant.rent.utils.ScreenUtils
-import io.atlant.rent.view.ImageViewRound
-import me.zhanghai.android.materialprogressbar.MaterialProgressBar
+import kotlinx.android.synthetic.main.adapter_detail_gallery.view.*
 import java.util.*
 
 class RentImagePagerAdapter(private val context: Context, private val arrayListURL: ArrayList<String>) : PagerAdapter() {
 
-    @BindView(R.id.adapter_detail_progress_bar)
-    lateinit var progressBar: MaterialProgressBar
-    @BindView(R.id.adapter_detail_gallery_image)
-    lateinit var imageView: ImageViewRound
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
     override fun getCount(): Int {
@@ -39,8 +32,7 @@ class RentImagePagerAdapter(private val context: Context, private val arrayListU
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val view = inflater.inflate(R.layout.adapter_detail_gallery, container, false)
-        ButterKnife.bind(this, view)
-        val picassoTargetUtils = PicassoTargetUtils(progressBar, imageView)
+        val picassoTargetUtils = PicassoTargetUtils(view.adapter_detail_progress_bar, view.adapter_detail_gallery_image)
         picassoTargetUtils.setCallBack(object : CallBack {
             override fun onBitmapLoaded() {
 
