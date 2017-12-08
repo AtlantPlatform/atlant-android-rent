@@ -5,7 +5,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import butterknife.ButterKnife
 import io.atlant.rent.R
 import io.atlant.rent.adapter.RentCityAdapter
 import io.atlant.rent.model.RentCity
@@ -46,7 +45,6 @@ class ToolbarMainView : LinearLayout, RentCityAdapter.CallBack {
     private fun initView() {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = inflater.inflate(layoutRes, this)
-        ButterKnife.bind(view)
     }
 
 

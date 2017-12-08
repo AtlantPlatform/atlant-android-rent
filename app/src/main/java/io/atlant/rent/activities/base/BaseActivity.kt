@@ -12,7 +12,6 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import android.widget.Toast
-import butterknife.ButterKnife
 import io.atlant.rent.MyApplication
 import io.atlant.rent.R
 import io.atlant.rent.activities.demo.DemoActivity
@@ -45,7 +44,6 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
         super.setContentView(rootLayout)
 
         setupComponent(MyApplication[context].appComponent!!)
-        ButterKnife.bind(this)
 
         base_toolbar.title = ""
         FontsUtils.toOctarineBold(context, base_toolbar_title)
