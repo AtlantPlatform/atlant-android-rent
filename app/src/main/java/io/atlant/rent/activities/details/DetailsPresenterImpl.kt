@@ -7,10 +7,7 @@ import android.graphics.Paint
 import android.support.v4.view.ViewPager
 import android.support.v4.widget.NestedScrollView
 import android.view.MotionEvent
-import android.view.View
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
-import android.view.animation.Animation.AnimationListener
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.LinearLayout
 import io.atlant.rent.R
 import io.atlant.rent.activities.base.BasePresenter
@@ -119,11 +116,13 @@ internal constructor(private val view: DetailsView) : DetailsPresenter, BasePres
     override fun startAnimationDown() {
         view.startAnimation()
         val time = 1000
+        val animationInterpolator = AccelerateDecelerateInterpolator()
 
         val dp = 200
         val px = DimensUtils.dpToPx(context!!, dp.toFloat())
-        val animSize = ValueAnimator.ofInt(viewPager!!.measuredHeight, px)
-        animSize.addUpdateListener { valueAnimator ->
+        val animSizeViewPager = ValueAnimator.ofInt(viewPager!!.measuredHeight, px)
+        animSizeViewPager.interpolator = animationInterpolator
+        animSizeViewPager.addUpdateListener { valueAnimator ->
             val `val` = valueAnimator.animatedValue as Int
             sizeViewPager(`val`)
             if (`val` == px) {
@@ -132,53 +131,29 @@ internal constructor(private val view: DetailsView) : DetailsPresenter, BasePres
                 scrollView!!.setPadding(0, 0, 0, view.sizeFooter)
             }
         }
-        animSize.duration = time.toLong()
-        animSize.start()
+        animSizeViewPager.duration = time.toLong()
+        animSizeViewPager.start()
 
-        val animSize2 = ValueAnimator.ofInt(linearViewPager!!.measuredHeight, 0)
-        animSize2.addUpdateListener { valueAnimator ->
+        val animSizeLinearViewPager = ValueAnimator.ofInt(linearViewPager!!.measuredHeight, px)
+        animSizeLinearViewPager.interpolator = animationInterpolator
+        animSizeLinearViewPager.addUpdateListener { valueAnimator ->
             val `val` = valueAnimator.animatedValue as Int
-
-            val params = linearViewPager!!.layoutParams
-            params.height = `val`
-            linearViewPager!!.layoutParams = params
+            linearViewPager!!.layoutParams.height = `val`
         }
-        animSize2.duration = time.toLong()
-        animSize2.start()
+        animSizeLinearViewPager.duration = time.toLong()
+        animSizeLinearViewPager.start()
 
-        val animAlphaFooter = ValueAnimator.ofFloat(0.0f, 1.0f)
-        animAlphaFooter.addUpdateListener { valueAnimator ->
+        val animAlpha = ValueAnimator.ofFloat(0.0f, 1.0f)
+        val currentAlphaPagerView = viewPager!!.alpha
+        animAlpha.interpolator = animationInterpolator
+        animAlpha.addUpdateListener { valueAnimator ->
             val `val` = valueAnimator.animatedValue as Float
             view.setAlphaFooter(`val`)
+            linearViewPager!!.alpha = 1.0f - `val`
+            viewPager!!.alpha = currentAlphaPagerView + `val` / 2
         }
-        animAlphaFooter.duration = time.toLong()
-        animAlphaFooter.start()
-
-        val animAlphaViewPager = ValueAnimator.ofFloat(0.5f, 1.0f)
-        animAlphaViewPager.addUpdateListener { valueAnimator ->
-            val `val` = valueAnimator.animatedValue as Float
-            viewPager!!.alpha = `val`
-        }
-        animAlphaViewPager.duration = time.toLong()
-        animAlphaViewPager.start()
-
-        val alphaAnimation = AlphaAnimation(1f, 0f)
-        alphaAnimation.setAnimationListener(object : AnimationListener {
-            override fun onAnimationStart(animation: Animation) {
-
-            }
-
-            override fun onAnimationEnd(animation: Animation) {
-                linearViewPager!!.visibility = View.INVISIBLE
-            }
-
-            override fun onAnimationRepeat(animation: Animation) {
-
-            }
-        })
-        alphaAnimation.duration = time.toLong()
-        linearViewPager!!.startAnimation(alphaAnimation)
-
+        animAlpha.duration = time.toLong()
+        animAlpha.start()
     }
 
     private fun sizeViewPager(pxHeight: Int) {
