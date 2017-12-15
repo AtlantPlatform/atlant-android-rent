@@ -1,6 +1,6 @@
 <resources>
   <!--app-->
-  <string name="app_name">Atlant Rentals</string>
+  <string name="app_name">Atlant Rent</string>
 
   <!--selected app-->
   <string name="selected_app_invest_title">Wallet</string>
@@ -11,7 +11,7 @@
   <string name="selected_app_trade_title2">Trade</string>
 
   <!--main-->
-  <string name="rent_welcome_text">Welcome to the first Blockchain-based P2P Rental Platform</string>
+  <string name="rent_welcome_text">Welcome to the first Blockchain-based Rental Platform</string>
   <string name="rent_welcome_text2">Available as a demo version of ATLANT Rentals scheduled for a future release</string>
   <string name="rent_main_title_choose_city">Most loved places</string>
   <string name="rent_main_title_choose_category">Choose yours</string>
