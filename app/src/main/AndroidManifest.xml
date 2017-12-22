@@ -22,7 +22,11 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".activities.demo.DemoActivity"/>
+    <activity
+      android:exported="true"
+      android:name=".activities.demo.DemoActivity"
+      android:theme="@style/AppTheme.NoActionBar.SplashScreen"/>
+
     <activity android:name=".activities.main.MainActivity"/>
     <activity android:name=".activities.details.DetailsActivity"/>
 
