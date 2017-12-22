@@ -20,6 +20,7 @@ class DemoActivity : BaseActivity(), DemoView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.AppTheme_NoActionBar_Gradient)
         setContentView(R.layout.activity_demo)
         presenter.onCreate()
     }
