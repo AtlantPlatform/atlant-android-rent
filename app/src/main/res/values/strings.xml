@@ -34,7 +34,7 @@
 
 <resources>
   <!--app-->
-  <string name="app_name">ATLANT Rent</string>
+  <string name="app_name">Atlant Rent</string>
 
   <!--selected app-->
   <string name="selected_app_invest_title">Wallet</string>
