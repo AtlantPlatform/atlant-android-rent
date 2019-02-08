@@ -34,7 +34,7 @@
 
 <resources>
   <!--app-->
-  <string name="app_name">Atlant Rent</string>
+  <string name="app_name">ATLANT Rent</string>
 
   <!--selected app-->
   <string name="selected_app_invest_title">Wallet</string>
@@ -85,6 +85,6 @@
   <string name="system_timeout">Could not connect to the server, please try again later.</string>
   <string name="system_image">Image</string>
   <string name="system_section_in_development">Application in development</string>
-  <string name="system_copyright">Copyright © Atlant.io, 2017</string>
+  <string name="system_copyright">Copyright © Atlant.io, 2019</string>
 
 </resources>

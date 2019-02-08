@@ -47,20 +47,17 @@ internal constructor(private val view: SelectedAppView) : SelectedAppPresenter, 
 
     override fun onCreate() {
         val context = view.context
-        val url1 = "https://atlant.io/promo/android/1.png"
-        val url2 = "https://atlant.io/promo/android/3.png"
-        val url3 = "https://atlant.io/promo/android/2.png"
 
         val arrayListTitle = ArrayList<SelectedApp>()
 
         arrayListTitle.add(SelectedApp(context.getString(R.string.selected_app_rent_title),
-                context.getString(R.string.selected_app_rent_title2), url2))
+                context.getString(R.string.selected_app_rent_title2), R.drawable.start_rent))
 
         arrayListTitle.add(SelectedApp(context.getString(R.string.selected_app_invest_title),
-                context.getString(R.string.selected_app_invest_title2), url1))
+                context.getString(R.string.selected_app_invest_title2), R.drawable.start_wallet))
 
         arrayListTitle.add(SelectedApp(context.getString(R.string.selected_app_trade_title),
-                context.getString(R.string.selected_app_trade_title2), url3))
+                context.getString(R.string.selected_app_trade_title2),  R.drawable.start_exchange))
 
         val adapter = SelectedAppPagerAdapter(view.context, arrayListTitle)
         adapter.setCallBack(this)

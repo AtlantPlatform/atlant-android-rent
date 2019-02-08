@@ -84,7 +84,7 @@ class SelectedAppActivity : BaseActivity(), SelectedAppView {
     }
 
     override fun startWallet() {
-        val appPackageName = "com.frostchein.atlant"
+        val appPackageName = "io.atlant.wallet"
         val launchIntent = packageManager.getLaunchIntentForPackage(appPackageName)
         if (launchIntent != null) {
             startActivity(launchIntent)//null pointer check in case package name was not found
