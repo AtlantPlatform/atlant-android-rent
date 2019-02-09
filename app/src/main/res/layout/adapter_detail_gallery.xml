@@ -44,7 +44,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <io.atlant.rent.view.ImageViewRound
+    <io.atlant.let.view.ImageViewRound
       android:id="@+id/adapter_detail_gallery_image"
       android:layout_width="match_parent"
       android:layout_height="match_parent"

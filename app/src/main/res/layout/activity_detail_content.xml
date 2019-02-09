@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <io.atlant.rent.view.LikeView
+        <io.atlant.let.view.LikeView
           android:id="@+id/detail_content_like_view"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
           android:text="@string/rent_do_you_like_it"
           android:textColor="@color/colorPrimaryText"/>
 
-        <io.atlant.rent.view.IndicatorCircleView
+        <io.atlant.let.view.IndicatorCircleView
           android:id="@+id/detail_content_indicator"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -397,7 +397,7 @@
 
     </LinearLayout>
 
-    <io.atlant.rent.view.MapView
+    <io.atlant.let.view.MapView
       android:id="@+id/detail_content_map_view"
       android:layout_width="match_parent"
       android:layout_height="200dp"

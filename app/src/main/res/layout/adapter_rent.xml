@@ -52,7 +52,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <io.atlant.rent.view.ImageViewRound
+    <io.atlant.let.view.ImageViewRound
       android:id="@+id/adapter_rent_image"
       android:layout_width="match_parent"
       android:layout_height="150dp"
@@ -74,7 +74,7 @@
       android:layout_alignParentTop="true"
       android:gravity="end">
 
-      <io.atlant.rent.view.LikeView
+      <io.atlant.let.view.LikeView
         android:id="@+id/adapter_rent_like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

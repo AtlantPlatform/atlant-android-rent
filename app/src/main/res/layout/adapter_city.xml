@@ -47,7 +47,7 @@
   android:clickable="true"
   android:focusable="true">
 
-  <io.atlant.rent.view.ImageViewRound
+  <io.atlant.let.view.ImageViewRound
     android:id="@+id/adapter_city_image_round_view"
     android:layout_width="match_parent"
     android:layout_height="150dp"
